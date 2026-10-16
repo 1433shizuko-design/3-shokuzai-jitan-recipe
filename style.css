@@ -1,0 +1,109 @@
+:root{--cream:#fff8e9;--paper:#fffdf7;--tomato:#dc543f;--tomato-dark:#b93f30;--green:#5e9b69;--ink:#3f4039;--muted:#77766d;--line:#eadcc2;--shadow:0 8px 26px rgba(111,73,37,.1)}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.65}
+.skip-link{position:absolute;left:-999px}
+.skip-link:focus{left:12px;top:12px;z-index:9;background:white;padding:8px}
+button,input{font:inherit}
+button{cursor:pointer}
+.hero{max-width:1120px;margin:auto;min-height:335px;padding:52px 32px 30px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:24px}
+.eyebrow,.step{margin:0;color:var(--green);font-weight:800;letter-spacing:.08em;font-size:.78rem}
+.hero h1{font-size:clamp(2.3rem,5vw,4.2rem);line-height:1.12;letter-spacing:.02em;margin:7px 0 12px}
+.hero h1 span{color:var(--tomato)}
+.catchcopy{font-size:1.17rem;font-weight:700;margin:0}
+.submessage{margin:7px 0 0;color:var(--muted)}
+.mascot-area{height:253px;position:relative;display:flex;justify-content:center;align-items:end}
+.speech{position:absolute;top:0;left:0;background:#fff;border:2px solid var(--line);border-radius:22px;padding:12px 18px;font-weight:700;z-index:1;box-shadow:var(--shadow)}
+.speech:after{content:"";position:absolute;bottom:-10px;right:28px;width:17px;height:17px;background:white;border-right:2px solid var(--line);border-bottom:2px solid var(--line);transform:rotate(45deg)}
+.mascot-frame{width:210px;height:220px;display:grid;place-items:end center;overflow:hidden}
+.mascot-frame img{display:block;max-width:100%;max-height:100%;object-fit:contain;object-position:center bottom}
+.mascot-missing{width:180px;height:190px;border:2px dashed #d9bca4;background:#fffaf1;border-radius:45% 45% 20px 20px;text-align:center;color:#9a755b;padding:30px 8px}
+.mascot-missing span{font-size:3rem}
+.mascot-missing p{font-size:.83rem;margin:8px}
+
+main{max-width:1120px;margin:auto;padding:0 32px 70px}
+.ingredient-panel,.results-section{background:var(--paper);border:1px solid #f0e3cb;border-radius:24px;padding:30px;box-shadow:var(--shadow)}
+.section-heading h2,.results-heading h2{font-size:1.55rem;margin:3px 0}
+.section-heading>p:last-child{margin:0;color:var(--muted);font-size:.94rem}
+.selected-ingredients{display:flex;flex-wrap:wrap;gap:10px;min-height:50px;margin:22px 0 4px}
+.ingredient-chip{background:#f7e4db;border:1px solid #efc8bb;border-radius:999px;padding:8px 8px 8px 15px;font-weight:700;display:inline-flex;align-items:center;gap:9px}
+.ingredient-chip button{border:0;background:#fff;color:var(--tomato);font-weight:800;border-radius:50%;width:24px;height:24px;line-height:1}
+.empty-chip{color:var(--muted);align-self:center}
+.selection-status{font-size:.88rem;color:var(--green);font-weight:700;margin:0 0 11px}
+.input-row{display:flex;gap:10px;align-items:start}
+.autocomplete-wrap{flex:1;position:relative}
+.input-row input{width:100%;border:2px solid var(--line);background:#fff;border-radius:12px;padding:13px 15px;min-height:51px;outline:none}
+.input-row input:focus{border-color:var(--green)}
+.suggestions{display:none;position:absolute;z-index:3;top:calc(100% + 4px);width:100%;background:white;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+.suggestions.visible{display:block}
+.suggestion{width:100%;border:0;background:#fff;padding:10px 15px;text-align:left}
+.suggestion:hover,.suggestion:focus{background:#f6f2e8}
+.category-area{margin-top:24px;border-top:1px dashed var(--line);padding-top:17px}
+.category-label{font-weight:700;margin:0 0 8px}
+.category-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.category-tab{border:1px solid var(--line);border-radius:999px;background:#fff;padding:6px 10px;font-size:.82rem}
+.category-tab.active{background:var(--green);border-color:var(--green);color:white}
+.category-items{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+.food-button{border:0;background:#f8f3e9;border-radius:9px;padding:6px 10px;color:var(--ink)}
+.food-button:hover{background:#e6f0e5}
+.actions{margin-top:25px;display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.button{border:0;border-radius:12px;padding:11px 16px;font-weight:800;min-height:46px}
+.button-primary{background:var(--tomato);color:#fff;box-shadow:0 4px 0 var(--tomato-dark)}
+.button-primary:hover{background:var(--tomato-dark)}
+.button-primary span{font-size:1.2em;margin-left:5px}
+.button-secondary{background:var(--green);color:#fff}
+.button-plain{background:#f6efe3;color:#635f57}
+.form-message{min-height:1.5em;color:#be3e30;font-weight:700;margin:14px 0 0}
+.results-section{margin-top:30px}
+.results-heading{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.results-heading h2{margin-top:0}
+.results-heading p:last-child{margin:0;color:var(--muted)}
+.recipe-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px;margin-top:23px}
+.recipe-card{position:relative;border:1px solid var(--line);border-radius:18px;background:#fff;padding:18px;display:flex;flex-direction:column}
+.recipe-emoji{font-size:2.6rem;line-height:1}
+.recipe-card h3{font-size:1.12rem;line-height:1.4;margin:9px 35px 5px 0}
+.favorite{position:absolute;right:14px;top:14px;border:0;background:transparent;font-size:1.7rem;color:var(--tomato)}
+.meta{display:flex;gap:7px;flex-wrap:wrap;font-size:.82rem}
+.meta span{padding:3px 7px;background:#f6f1e7;border-radius:99px}
+.match{color:var(--green);font-weight:800;font-size:.87rem;margin:10px 0 4px}
+.recipe-card p{font-size:.9rem;margin:6px 0;color:#5b5b53}
+.recipe-card .button{margin-top:auto;align-self:flex-start}
+.no-results{margin:24px 0 0;padding:20px;background:#fff6ed;border-radius:14px}
+.recipe-dialog{width:min(760px,94vw);max-height:88vh;border:0;border-radius:22px;padding:0;box-shadow:0 18px 80px rgba(45,35,15,.3)}
+.recipe-dialog::backdrop{background:rgba(54,45,30,.45)}
+.dialog-close{position:sticky;z-index:2;float:right;right:13px;top:13px;border:0;background:#f7e9dc;color:var(--tomato);border-radius:50%;width:37px;height:37px;font-size:1.7rem}
+.recipe-detail{padding:52px 56px 48px}
+.detail-title{font-size:1.7rem;margin:0 45px 6px 0}
+.detail-lead{color:var(--muted);margin:0 0 20px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.detail-box{background:#fff8ef;border-radius:14px;padding:13px}
+.detail-box h3,.detail-section h3{font-size:1rem;margin:0 0 6px;color:var(--tomato-dark)}
+.detail-box ul,.detail-section ul,.detail-section ol{margin:0;padding-left:1.2em}
+.detail-section{margin-top:20px}
+.detail-section li{margin:5px 0}
+.step-time{font-weight:800;color:var(--green);font-size:.84rem}
+footer{text-align:center;color:#847b6c;font-size:.8rem;padding:16px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+@media(max-width:650px){.hero{padding:35px 20px 16px;display:flex;flex-direction:column;align-items:stretch;gap:5px}
+.hero-copy{order:1}
+.mascot-area{order:2;height:190px}
+.mascot-frame{width:150px;height:165px}
+.speech{left:calc(50% - 142px);padding:8px 12px;font-size:.86rem}
+.mascot-missing{height:150px;width:140px;padding:18px 5px}
+.mascot-missing span{font-size:2.4rem}
+main{padding:0 14px 45px}
+.ingredient-panel,.results-section{padding:21px 16px;border-radius:18px}
+.input-row{flex-direction:column}
+.input-row .button{width:100%}
+.actions{justify-content:stretch}
+.actions .button{flex:1}
+.actions .button-primary{flex-basis:100%;order:-1}
+.results-heading{align-items:flex-start;flex-direction:column}
+.detail-grid{grid-template-columns:1fr}
+.recipe-detail{padding:42px 27px 36px}
+.category-tabs{max-height:92px;overflow:auto}
+}
+
+.ingredient-chip .chip-edit{width:auto;border-radius:8px;padding:0 6px;font-size:.72rem;color:#665e52}
+

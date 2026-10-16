@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="家にある3食材から30分以内のおかずを探せる、APIキー不要のレシピアプリ">
+  <title>3食材で！時短ごはん</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#ingredient-panel">食材入力へ移動</a>
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">30分以内でつくれる、今日のおかず</p>
+      <h1>3食材で！<br><span>時短ごはん</span></h1>
+      <p class="catchcopy">お家にあるもので、今日の晩ご飯をパパッと決めよう！</p>
+      <p class="submessage">食材3つを入力するだけ！30分以内のおかずレシピをご紹介♪</p>
+    </div>
+    <div class="mascot-area">
+      <div class="speech">今日の晩ご飯、<br>いっしょに決めよう♪</div>
+      <div class="mascot-frame">
+        <img id="mascot" src="assets/recipe-mascot.png" alt="お玉を持った、赤と白のギンガムチェックのエプロンを着たキャラクター">
+        <div id="mascot-missing" class="mascot-missing" hidden>
+          <span aria-hidden="true">🍳</span>
+          <p>キャラクター画像を<br>配置してください</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="ingredient-panel" class="ingredient-panel" aria-labelledby="ingredient-title">
+      <div class="section-heading">
+        <p class="step">STEP 1</p>
+        <h2 id="ingredient-title">冷蔵庫・食品棚にある食材を3つ選ぼう</h2>
+        <p>候補から選ぶか、食材名を自由に入力できます。</p>
+      </div>
+      <div id="selected-ingredients" class="selected-ingredients" aria-live="polite"></div>
+      <p id="selection-status" class="selection-status">あと3つ選べます</p>
+      <div class="input-row">
+        <label class="sr-only" for="ingredient-input">食材名を入力</label>
+        <div class="autocomplete-wrap">
+          <input id="ingredient-input" type="text" autocomplete="off" placeholder="例：ツナ缶、キャベツ、春雨" aria-controls="suggestions" aria-expanded="false">
+          <div id="suggestions" class="suggestions" role="listbox"></div>
+        </div>
+        <button id="add-ingredient" class="button button-secondary" type="button">追加する</button>
+      </div>
+      <div class="category-area">
+        <p class="category-label">カテゴリから選ぶ</p>
+        <div id="category-tabs" class="category-tabs" aria-label="食材カテゴリ"></div>
+        <div id="category-items" class="category-items"></div>
+      </div>
+      <div class="actions">
+        <button id="reuse-last" class="button button-plain" type="button" hidden>前回の食材を使う</button>
+        <button id="clear-ingredients" class="button button-plain" type="button">すべてクリア</button>
+        <button id="search-recipes" class="button button-primary" type="button">この3食材でレシピを探す <span>→</span></button>
+      </div>
+      <p id="form-message" class="form-message" role="alert"></p>
+    </section>
+
+    <section id="results-section" class="results-section" aria-live="polite" hidden>
+      <div class="results-heading">
+        <div>
+          <p class="step">STEP 2</p>
+          <h2>おすすめレシピ</h2>
+          <p id="results-summary"></p>
+        </div>
+        <button id="show-favorites" class="button button-plain" type="button">♡ お気に入りを見る</button>
+      </div>
+      <div id="recipe-results" class="recipe-grid"></div>
+      <div id="no-results" class="no-results" hidden></div>
+    </section>
+
+    <section id="favorites-section" class="results-section" hidden>
+      <div class="results-heading"><div><p class="step">MY RECIPES</p><h2>お気に入り</h2></div><button id="close-favorites" class="button button-plain" type="button">検索結果に戻る</button></div>
+      <div id="favorites-results" class="recipe-grid"></div>
+      <p id="no-favorites" class="no-results" hidden>まだお気に入りはありません。気になるレシピの♡を押して保存できます。</p>
+    </section>
+  </main>
+
+  <dialog id="recipe-dialog" class="recipe-dialog" aria-labelledby="dialog-title">
+    <button id="close-dialog" class="dialog-close" type="button" aria-label="詳細を閉じる">×</button>
+    <article id="recipe-detail"></article>
+  </dialog>
+
+  <footer>3食材で！時短ごはん　—　登録レシピはすべて30分以内です</footer>
+  <script src="recipes.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
